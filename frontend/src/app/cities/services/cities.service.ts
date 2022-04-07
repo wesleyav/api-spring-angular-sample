@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { first, tap } from 'rxjs/operators';
 
 import { City } from '../entity/city';
 
@@ -8,9 +9,15 @@ import { City } from '../entity/city';
 })
 export class CitiesService {
 
+  private readonly API = '/assets/cities.json';
+
   constructor(private httpClient: HttpClient) {}
 
-  findAll(): City[] {
-    return [{ city_id: '1', city: 'São Paulo', last_update: '2022-04-06' }];
+  findAll() {
+    return this.httpClient.get<City[]>(this.API)
+    .pipe(
+      first(),
+      tap(cities => console.log(cities))
+    );
   }
 }

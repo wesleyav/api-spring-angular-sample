@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { City } from '../entity/city';
 import { CitiesService } from '../services/cities.service';
@@ -9,7 +10,7 @@ import { CitiesService } from '../services/cities.service';
   styleUrls: ['./cities.component.scss'],
 })
 export class CitiesComponent implements OnInit {
-  cities: City[] = [];
+  cities: Observable<City[]>;
   displayedColumns = ['city', 'last_update'];
 
   constructor(private citiesService: CitiesService) {

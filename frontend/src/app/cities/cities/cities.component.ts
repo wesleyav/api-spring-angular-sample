@@ -10,11 +10,11 @@ import { CitiesService } from '../services/cities.service';
   styleUrls: ['./cities.component.scss'],
 })
 export class CitiesComponent implements OnInit {
-  cities: Observable<City[]>;
+  cities$: Observable<City[]>;
   displayedColumns = ['city', 'last_update'];
 
   constructor(private citiesService: CitiesService) {
-    this.cities = this.citiesService.findAll();
+    this.cities$ = this.citiesService.findAll();
   }
 
   ngOnInit(): void {}

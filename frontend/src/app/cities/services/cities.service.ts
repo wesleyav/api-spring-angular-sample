@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, tap } from 'rxjs/operators';
+import { delay, first, tap } from 'rxjs/operators';
 
 import { City } from '../entity/city';
 
@@ -17,6 +17,7 @@ export class CitiesService {
     return this.httpClient.get<City[]>(this.API)
     .pipe(
       first(),
+      delay(5000),
       tap(cities => console.log(cities))
     );
   }

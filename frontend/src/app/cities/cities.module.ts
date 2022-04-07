@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
 
 import { CitiesRoutingModule } from './cities-routing.module';
 import { CitiesComponent } from './cities/cities.component';
@@ -11,7 +12,8 @@ import { CitiesComponent } from './cities/cities.component';
   ],
   imports: [
     CommonModule,
-    CitiesRoutingModule
+    CitiesRoutingModule,
+    MatTableModule
   ]
 })
 export class CitiesModule { }

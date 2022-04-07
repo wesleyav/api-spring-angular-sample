@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { City } from '../entity/city';
+import { CitiesService } from '../services/cities.service';
 
 @Component({
   selector: 'app-cities',
@@ -8,13 +9,12 @@ import { City } from '../entity/city';
   styleUrls: ['./cities.component.scss'],
 })
 export class CitiesComponent implements OnInit {
-
-  cities: City[] = [
-    { city_id: '1', city: 'São Paulo', last_update: '2022-04-06'}
-  ];
+  cities: City[] = [];
   displayedColumns = ['city', 'last_update'];
 
-  constructor() {}
+  constructor(private citiesService: CitiesService) {
+    this.cities = this.citiesService.findAll();
+  }
 
   ngOnInit(): void {}
 }
